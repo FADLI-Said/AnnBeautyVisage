@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+body {
+  overflow-y: hidden;
+}
+body .nav {
+  font-family: "Raleway", sans-serif;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: black 1px solid;
+}
+body .nav.purple {
+  background: #ffb3a9;
+}
+body .nav img {
+  width: 3rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+body .nav a {
+  color: #2f4858;
+  text-decoration: none;
+  font: 20px "Raleway", sans-serif;
+  margin: 0 10px;
+  padding: 10px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: middle;
+}
+body .nav.topBotomBordersIn a:before, body .nav.topBotomBordersIn a:after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #2f4858;
+  content: "";
+  opacity: 0;
+  transition: all 0.3s;
+}
+body .nav.topBotomBordersIn a:before {
+  top: 0;
+  transform: translateY(-10px);
+}
+body .nav.topBotomBordersIn a:after {
+  bottom: 0;
+  transform: translateY(10px);
+}
+body .nav.topBotomBordersIn a:hover:before, body .nav.topBotomBordersIn a:hover:after {
+  opacity: 1;
+  transform: translateY(0);
+}
+body #connexion,
+body #inscription {
+  background-image: linear-gradient(to bottom, #ffb3a9, #de8982, #bc615d, #9a383b, #78001d);
+  font-family: "Raleway", sans-serif;
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body #connexion .container,
+body #inscription .container {
+  margin: 0 auto;
+  text-align: center;
+}
+body #connexion .container h1,
+body #inscription .container h1 {
+  margin: 0;
+  padding-top: 1rem;
+}
+body #connexion .container div input,
+body #inscription .container div input {
+  background-color: #78001d !important;
+  color: white !important;
+}
+body #connexion .container div input:focus,
+body #inscription .container div input:focus {
+  outline: none;
+  box-shadow: none !important;
+  border: 3px solid white !important;
+}
+body #connexion .container div label,
+body #inscription .container div label {
+  color: white !important;
+}
+body #connexion .container button,
+body #inscription .container button {
+  background-color: #78001d !important;
+  color: white !important;
+  border: 3px solid white !important;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  margin-top: 1rem;
+}
+body #connexion .container button:hover,
+body #inscription .container button:hover {
+  background-color: white !important;
+  color: #78001d !important;
+  border: 3px solid #78001d !important;
+  transition: all 0.3s ease-in-out;
+}
+body #connexion .container button:not(:hover),
+body #inscription .container button:not(:hover) {
+  transition: all 0.3s ease-in-out;
+}
+body #connexion a,
+body #inscription a {
+  color: white !important;
+  text-decoration: none !important;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  display: block;
+}
+body #connexion a:hover,
+body #inscription a:hover {
+  text-decoration: underline !important;
+  font-weight: bold;
+}
+body #connexion a:not(:hover),
+body #inscription a:not(:hover) {
+  transition: all 0.3s ease-in-out;
+}
+body section {
+  background-image: linear-gradient(to bottom, #ffb3a9, #de8982, #bc615d, #9a383b, #78001d);
+  font-family: "Raleway", sans-serif;
+  height: 100vh;
+}
+body section .container {
+  margin: 0 auto;
+  text-align: center;
+}
+body section .container h1 {
+  margin: 0;
+  padding-top: 1rem;
+}/*# sourceMappingURL=style.css.map */

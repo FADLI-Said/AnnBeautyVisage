@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+//##################### NAVIGATION ######################
+body {
+    overflow-y: hidden;
+
+    .nav {
+        font-family: "Raleway", sans-serif;
+        margin: 0 auto;
+        padding: 2rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: black 1px solid;
+
+        &.purple {
+            background: #ffb3a9;
+        }
+
+        img {
+            width: 3rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        a {
+            color: #2f4858;
+            text-decoration: none;
+            font: 20px "Raleway", sans-serif;
+            margin: 0 10px;
+            padding: 10px;
+            position: relative;
+            z-index: 0;
+            cursor: pointer;
+            text-transform: uppercase;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &.topBotomBordersIn {
+            a {
+
+                &:before,
+                &:after {
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background: #2f4858;
+                    content: "";
+                    opacity: 0;
+                    transition: all 0.3s;
+                }
+
+                &:before {
+                    top: 0;
+                    transform: translateY(-10px);
+                }
+
+                &:after {
+                    bottom: 0;
+                    transform: translateY(10px);
+                }
+
+                &:hover:before,
+                &:hover:after {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+
+    //##################### CONNEXION ######################
+
+    #connexion,
+    #inscription {
+        background-image: linear-gradient(to bottom, #ffb3a9, #de8982, #bc615d, #9a383b, #78001d);
+        font-family: "Raleway", sans-serif;
+        height: 88vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .container {
+            margin: 0 auto;
+            text-align: center;
+
+            h1 {
+                margin: 0;
+                padding-top: 1rem;
+            }
+
+            div {
+                input {
+                    background-color: #78001d !important;
+                    color: white !important;
+
+                    &:focus {
+                        outline: none;
+                        box-shadow: none !important;
+                        border: 3px solid white !important;
+                    }
+                }
+
+                label {
+                    color: white !important;
+                }
+            }
+
+            button {
+                background-color: #78001d !important;
+                color: white !important;
+                border: 3px solid white !important;
+                font-family: "Raleway", sans-serif;
+                font-size: 1.5rem;
+                padding: 0.5rem 2rem;
+                margin-top: 1rem;
+
+                &:hover {
+                    background-color: white !important;
+                    color: #78001d !important;
+                    border: 3px solid #78001d !important;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                &:not(:hover) {
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+
+
+        }
+
+        a {
+            color: white !important;
+            text-decoration: none !important;
+            font-family: "Raleway", sans-serif;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            display: block;
+
+            &:hover {
+                text-decoration: underline !important;
+                font-weight: bold;
+            }
+
+            &:not(:hover) {
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
+    //##################### ACCUEIL ######################
+
+    section {
+        background-image: linear-gradient(to bottom, #ffb3a9, #de8982, #bc615d, #9a383b, #78001d);
+        font-family: "Raleway", sans-serif;
+        height: 100vh;
+
+        .container {
+            margin: 0 auto;
+            text-align: center;
+
+            h1 {
+                margin: 0;
+                padding-top: 1rem;
+            }
+        }
+    }
+}
