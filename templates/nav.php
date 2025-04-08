@@ -1,4 +1,4 @@
-<div class="nav purple topBotomBordersIn">
+<div class="nav purple topBotomBordersIn z-3">
     <img src="/assets/images/traitement-de-beaute.png" alt="">
     <div>
         <a href="/src/Controller/controller-accueil.php">Accueil</a>
