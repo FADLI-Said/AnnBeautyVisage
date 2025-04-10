@@ -1,9 +1,15 @@
 <?php require_once "../../templates/header.php" ?>
 
 <body id="body-connexion">
-    <?php require_once "../../templates/nav.php" ?>
+    <?php if (isset($_SESSION["user_mail"])) {
+        include_once "../../templates/co-nav.php";
+    } else {
+        include_once "../../templates/deco-nav.php";
+    } ?>
 
-    <section class="pt-5" id="connexion">
+    <section id="connexion">
+        <a href="../Controller/controller-accueil.php" class="w-100 text-start"><i class="fas fa-arrow-left"></i>
+            retour</a>
         <h1 class="text-center">Connexion</h1>
         <p class="text-center">Connectez-vous à votre compte pour réserver vos soins de beauté.</p>
         <form type="submit" class="container form-floating mt-5" method="POST" novalidate>

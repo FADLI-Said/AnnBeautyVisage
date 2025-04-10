@@ -1,6 +1,13 @@
 <?php
 
+session_start();
+
 include_once "../../config.php";
+
+if (isset($_SESSION["user_mail"])) {
+    header("Location: ../Controller/controller-profil.php");
+    exit;
+}
 
 $regex_name = "/^[a-zA-ZÀ-ú]+$/";
 $regex_password = "/^[a-zA-Z0-9]{8,30}+$/";
@@ -93,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $pdo = "";
 
-        header("Location: ../Controller/controller-connexion.php");
+        header("Location: ../Controller/controller-confirmation.php");
         exit;
     }
 

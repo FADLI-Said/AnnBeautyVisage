@@ -65,6 +65,10 @@ body #inscription {
   align-items: center;
   justify-content: center;
 }
+body #connexion a,
+body #inscription a {
+  padding-left: 2rem;
+}
 body #connexion h1,
 body #inscription h1 {
   color: #78001d;
@@ -193,4 +197,37 @@ body footer a:not(:hover) {
 
 #body-inscription section {
   padding-bottom: 5rem;
+}
+
+#body-confirmation section {
+  padding-bottom: 32.6em;
+  color: #78001d;
+}
+#body-confirmation section a {
+  text-decoration: none;
+  color: white;
+}
+#body-confirmation section a:hover {
+  transition: all 0.3s ease-in-out;
+  text-decoration: underline !important;
+  font-weight: bold;
+}
+#body-confirmation section a:not(:hover) {
+  transition: all 0.3s ease-in-out;
+}
+
+#body-accueil section {
+  padding-bottom: 30rem;
+  color: #78001d;
+}
+#body-accueil section a {
+  color: white;
+}
+#body-accueil section a:hover {
+  transition: all 0.3s ease-in-out;
+  text-decoration: underline;
+  font-weight: bold;
+}
+#body-accueil section a:not(:hover) {
+  transition: all 0.3s ease-in-out;
 }/*# sourceMappingURL=style.css.map */

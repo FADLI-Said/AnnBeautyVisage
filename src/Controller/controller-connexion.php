@@ -1,7 +1,13 @@
 <?php
 
+session_start();
+
 include_once "../../config.php";
 
+if (isset($_SESSION["user_mail"])) {
+    header("Location: ../Controller/controller-profil.php");
+    exit;
+}
 
 $error = [];
 
@@ -23,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT user_mail, user_mdp FROM 76_users WHERE user_mail = :email";
+        $sql = "SELECT * FROM 76_users WHERE user_mail = :email";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(":email", $_POST["id"]);
@@ -38,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             if (password_verify($_POST["password"], $user["user_mdp"])) {
                 $_SESSION = $user;
-                header("Location: ../Controller/controller-index.php");
+                header("Location: ../Controller/controller-accueil.php");
                 exit;
             } else {
                 $error["connexion"] = "<i class='fa-solid fa-circle-exclamation'></i> L'identifiant ou le mot de passe est incorrect.";

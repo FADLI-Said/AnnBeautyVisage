@@ -84,6 +84,10 @@ body {
         align-items: center;
         justify-content: center;
 
+        a {
+            padding-left: 2rem;
+        }
+
         h1 {
             color: #78001d;
         }
@@ -237,5 +241,48 @@ body {
 #body-inscription {
     section {
         padding-bottom: 5rem;
+    }
+}
+
+#body-confirmation {
+    section {
+        padding-bottom: 32.6em;
+        color: #78001d;
+
+        a {
+            text-decoration: none;
+            color: white;
+
+            &:hover {
+                transition: all 0.3s ease-in-out;
+                text-decoration: underline !important;
+                font-weight: bold;
+            }
+
+            &:not(:hover) {
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+}
+
+#body-accueil {
+    section {
+        padding-bottom: 30rem;
+        color: #78001d;
+
+        a {
+            color: white;
+
+            &:hover {
+                transition: all 0.3s ease-in-out;
+                text-decoration: underline;
+                font-weight: bold;
+            }
+
+            &:not(:hover) {
+                transition: all 0.3s ease-in-out;
+            }
+        }
     }
 }
