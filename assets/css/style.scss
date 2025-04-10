@@ -286,3 +286,47 @@ body {
         }
     }
 }
+
+#body-profil {
+    section {
+        padding-bottom: 12.8rem;
+        color: #78001d;
+
+        .profil-container {
+            .profil-card {
+                p {
+                    color: white;
+
+                    span {
+                        color: #78001d;
+                    }
+                }
+            }
+
+            .action {
+                .modal-dialog {
+                    .modal-content {
+                        background-color: #78001d;
+                    }
+                }
+            }
+        }
+
+        button, a {
+            color: white;
+            text-decoration: none;
+            border: none;
+            background: none;
+
+            &:hover {
+                transition: all 0.3s ease-in-out;
+                text-decoration: underline;
+                font-weight: bold;
+            }
+
+            &:not(:hover) {
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+}

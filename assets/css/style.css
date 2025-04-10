@@ -230,4 +230,32 @@ body footer a:not(:hover) {
 }
 #body-accueil section a:not(:hover) {
   transition: all 0.3s ease-in-out;
+}
+
+#body-profil section {
+  padding-bottom: 12.8rem;
+  color: #78001d;
+}
+#body-profil section .profil-container .profil-card p {
+  color: white;
+}
+#body-profil section .profil-container .profil-card p span {
+  color: #78001d;
+}
+#body-profil section .profil-container .action .modal-dialog .modal-content {
+  background-color: #78001d;
+}
+#body-profil section button, #body-profil section a {
+  color: white;
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+#body-profil section button:hover, #body-profil section a:hover {
+  transition: all 0.3s ease-in-out;
+  text-decoration: underline;
+  font-weight: bold;
+}
+#body-profil section button:not(:hover), #body-profil section a:not(:hover) {
+  transition: all 0.3s ease-in-out;
 }/*# sourceMappingURL=style.css.map */
