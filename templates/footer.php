@@ -28,11 +28,6 @@ $randomAuthor = $auteur[$randomIndex];
 
     <div class="container text-center">
         <p>&copy; <?= date("Y"); ?> Mon Site Web. Tous droits réservés.</p>
-        <p>Suivez-nous sur :
-            <a href="https://www.facebook.com" target="_blank">Facebook</a>,
-            <a href="https://www.twitter.com" target="_blank">Twitter</a>,
-            <a href="https://www.instagram.com" target="_blank">Instagram</a>
-        </p>
     </div>
 </footer>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>

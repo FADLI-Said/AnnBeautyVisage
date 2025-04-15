@@ -1,261 +1,266 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
 body {
-  background-color: #78001d;
+  background-color: #E6CAAB;
+  color: #37260c;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 body .nav {
   font-family: "Raleway", sans-serif;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   position: sticky;
   top: 0;
   display: flex;
   justify-content: space-between;
   border-bottom: black 1px solid;
+  padding: 0 2rem;
 }
 body .nav.purple {
-  background: #ffb3a9;
+  background: #37260c;
 }
 body .nav img {
-  width: 3rem;
-  display: inline-block;
-  vertical-align: middle;
+  width: 8rem;
 }
-body .nav a {
-  color: #2f2c23;
+body .nav div {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+body .nav div a {
+  color: #E6CAAB;
   text-decoration: none;
-  font: 20px "Raleway", sans-serif;
+  font: 1.5rem "Raleway", sans-serif;
   margin: 0 10px;
   padding: 10px;
   position: relative;
-  z-index: 0;
   cursor: pointer;
   text-transform: uppercase;
   display: inline-block;
   vertical-align: middle;
 }
-body .nav.topBotomBordersIn a:before, body .nav.topBotomBordersIn a:after {
+body .nav div a::before, body .nav div a::after {
   position: absolute;
   left: 0;
   width: 100%;
   height: 2px;
-  background: #2f2c23;
+  background: #E6CAAB;
   content: "";
   opacity: 0;
   transition: all 0.3s;
 }
-body .nav.topBotomBordersIn a:before {
+body .nav div a::before {
   top: 0;
   transform: translateY(-10px);
 }
-body .nav.topBotomBordersIn a:after {
+body .nav div a::after {
   bottom: 0;
   transform: translateY(10px);
 }
-body .nav.topBotomBordersIn a:hover:before, body .nav.topBotomBordersIn a:hover:after {
+body .nav div a:hover::before, body .nav div a:hover::after {
   opacity: 1;
   transform: translateY(0);
 }
 body #connexion,
-body #inscription {
-  background-image: linear-gradient(to bottom, #ffb3a9, #de8982, #bc615d, #9a383b, #78001d);
-  font-family: "Raleway", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-body #connexion a,
-body #inscription a {
-  padding-left: 2rem;
+body #inscription,
+body #modifier-prestation {
+  padding: 1rem 0;
 }
 body #connexion h1,
-body #inscription h1 {
-  color: #78001d;
-}
 body #connexion p,
-body #inscription p {
-  color: #78001d;
+body #inscription h1,
+body #inscription p,
+body #modifier-prestation h1,
+body #modifier-prestation p {
+  text-align: center;
+}
+body #connexion .retour,
+body #inscription .retour,
+body #modifier-prestation .retour {
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  color: #37260c;
+  text-decoration: none;
+}
+body #connexion .retour:hover,
+body #inscription .retour:hover,
+body #modifier-prestation .retour:hover {
+  text-decoration: underline;
+  transition: all 0.3s;
 }
 body #connexion .container,
-body #inscription .container {
-  margin: 0 auto;
-  text-align: center;
+body #inscription .container,
+body #modifier-prestation .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
-body #connexion .container div input:-webkit-autofill,
-body #inscription .container div input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #78001d inset !important;
-  -webkit-text-fill-color: white !important;
+body #connexion .container .double,
+body #inscription .container .double,
+body #modifier-prestation .container .double {
+  display: flex;
+  gap: 1rem;
 }
-body #connexion .container div input:focus:-webkit-autofill,
-body #inscription .container div input:focus:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #78001d inset !important;
-  -webkit-text-fill-color: white !important;
+body #connexion .container div,
+body #inscription .container div,
+body #modifier-prestation .container div {
+  width: 100%;
 }
 body #connexion .container div input,
-body #inscription .container div input {
-  background-color: #78001d !important;
-  color: white !important;
+body #connexion .container div textarea,
+body #inscription .container div input,
+body #inscription .container div textarea,
+body #modifier-prestation .container div input,
+body #modifier-prestation .container div textarea {
+  background-color: #37260c;
+  color: #E6CAAB;
 }
 body #connexion .container div input:focus,
-body #inscription .container div input:focus {
-  outline: none;
-  box-shadow: none !important;
-  border: 3px solid white !important;
+body #connexion .container div textarea:focus,
+body #inscription .container div input:focus,
+body #inscription .container div textarea:focus,
+body #modifier-prestation .container div input:focus,
+body #modifier-prestation .container div textarea:focus {
+  background-color: #37260c;
+}
+body #connexion .container div input:-webkit-autofill,
+body #connexion .container div textarea:-webkit-autofill,
+body #inscription .container div input:-webkit-autofill,
+body #inscription .container div textarea:-webkit-autofill,
+body #modifier-prestation .container div input:-webkit-autofill,
+body #modifier-prestation .container div textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #37260c inset !important;
+  -webkit-text-fill-color: #E6CAAB !important;
+}
+body #connexion .container div input:focus:-webkit-autofill,
+body #connexion .container div textarea:focus:-webkit-autofill,
+body #inscription .container div input:focus:-webkit-autofill,
+body #inscription .container div textarea:focus:-webkit-autofill,
+body #modifier-prestation .container div input:focus:-webkit-autofill,
+body #modifier-prestation .container div textarea:focus:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #37260c inset !important;
+  -webkit-text-fill-color: #E6CAAB !important;
 }
 body #connexion .container div label,
-body #inscription .container div label {
-  color: white !important;
+body #inscription .container div label,
+body #modifier-prestation .container div label {
+  color: #E6CAAB;
 }
-body #connexion .container div span,
-body #inscription .container div span {
-  margin-top: 1rem;
+body #connexion .container div p,
+body #inscription .container div p,
+body #modifier-prestation .container div p {
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0 auto;
+  color: red;
+}
+body #connexion .container div a,
+body #inscription .container div a,
+body #modifier-prestation .container div a {
+  color: #37260c;
+}
+body #connexion .container p,
+body #inscription .container p,
+body #modifier-prestation .container p {
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0rem auto;
+  color: red;
 }
 body #connexion .container button,
-body #inscription .container button {
-  background-color: #78001d !important;
-  color: white !important;
-  border: 3px solid white !important;
-  font-family: "Raleway", sans-serif;
-  font-size: 1.5rem;
-  padding: 0.5rem 2rem;
-  margin-top: 1rem;
+body #inscription .container button,
+body #modifier-prestation .container button {
+  background-color: #37260c;
+  color: #E6CAAB;
+  padding: 0 1rem;
+  text-transform: uppercase;
 }
 body #connexion .container button:hover,
-body #inscription .container button:hover {
-  background-color: white !important;
-  color: #78001d !important;
-  border: 3px solid #78001d !important;
-  transition: all 0.3s ease-in-out;
+body #inscription .container button:hover,
+body #modifier-prestation .container button:hover {
+  color: #37260c;
+  background-color: #E6CAAB;
+  border: 1px solid #37260c;
 }
-body #connexion .container button:not(:hover),
-body #inscription .container button:not(:hover) {
-  transition: all 0.3s ease-in-out;
+body #connexion .container a,
+body #inscription .container a,
+body #modifier-prestation .container a {
+  color: #37260c;
 }
-body #connexion a,
-body #inscription a {
-  color: white !important;
-  text-decoration: none !important;
-  font-family: "Raleway", sans-serif;
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  display: block;
+body #connexion div a,
+body #inscription div a,
+body #modifier-prestation div a {
+  color: #37260c;
+  text-decoration: none;
 }
-body #connexion a:hover,
-body #inscription a:hover {
-  text-decoration: underline !important;
-  font-weight: bold;
+body #connexion div a:hover,
+body #inscription div a:hover,
+body #modifier-prestation div a:hover {
+  transition: all 0.3s;
+  text-decoration: underline;
 }
-body #connexion a:not(:hover),
-body #inscription a:not(:hover) {
-  transition: all 0.3s ease-in-out;
+body #accueil .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-body section {
-  background-image: linear-gradient(to bottom, #ffb3a9, #de8982, #bc615d, #9a383b, #78001d);
-  font-family: "Raleway", sans-serif;
+body #accueil .container a {
+  color: #37260c;
 }
-body section .container {
-  margin: 0 auto;
+body #prestations {
+  padding-top: 2rem;
+}
+body #prestations .retour {
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  color: #37260c;
+  text-decoration: none;
+}
+body #prestations .retour:hover {
+  text-decoration: underline;
+  transition: all 0.3s;
+}
+body #prestations .container caption {
   text-align: center;
+  color: #37260c;
 }
-body section .container h1 {
-  margin: 0;
-  padding-top: 1rem;
+body #prestations .container thead th,
+body #prestations .container thead td,
+body #prestations .container tbody th,
+body #prestations .container tbody td {
+  border: #37260c 1px solid;
+  padding: 0.5rem;
+}
+body #prestations .container thead th div div,
+body #prestations .container thead td div div,
+body #prestations .container tbody th div div,
+body #prestations .container tbody td div div {
+  background-color: #37260c;
+  color: #E6CAAB;
 }
 body footer {
-  font-family: "Raleway", sans-serif;
-  background-color: #78001d !important;
-  color: white !important;
   width: 100%;
-  border-top: black 1px solid;
-  padding-top: 1rem;
-}
-body footer figure {
-  color: #c0faff;
-  font-weight: bold;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+  color: #E6CAAB;
+  background-color: #37260c;
+  position: fixed;
+  bottom: 0;
 }
 body footer figure figcaption {
-  color: #457f8d !important;
-}
-body footer a {
-  color: white !important;
-  text-decoration: none !important;
-  font-family: "Raleway", sans-serif;
-  font-size: 1.5rem;
-}
-body footer a:hover {
-  text-decoration: underline !important;
-  font-weight: bold;
-}
-body footer a:not(:hover) {
-  transition: all 0.3s ease-in-out;
+  color: #8a7256 !important;
+  font-size: 1rem !important;
 }
 
-#body-connexion section {
-  padding-bottom: 10rem;
-}
-
-#body-inscription section {
-  padding-bottom: 5rem;
-}
-
-#body-confirmation section {
-  padding-bottom: 32.6em;
-  color: #78001d;
-}
-#body-confirmation section a {
-  text-decoration: none;
-  color: white;
-}
-#body-confirmation section a:hover {
-  transition: all 0.3s ease-in-out;
-  text-decoration: underline !important;
-  font-weight: bold;
-}
-#body-confirmation section a:not(:hover) {
-  transition: all 0.3s ease-in-out;
-}
-
-#body-accueil section {
-  padding-bottom: 30rem;
-  color: #78001d;
-}
-#body-accueil section a {
-  color: white;
-}
-#body-accueil section a:hover {
-  transition: all 0.3s ease-in-out;
-  text-decoration: underline;
-  font-weight: bold;
-}
-#body-accueil section a:not(:hover) {
-  transition: all 0.3s ease-in-out;
-}
-
-#body-profil section {
-  padding-bottom: 12.8rem;
-  color: #78001d;
-}
-#body-profil section .profil-container .profil-card p {
-  color: white;
-}
-#body-profil section .profil-container .profil-card p span {
-  color: #78001d;
-}
-#body-profil section .profil-container .action .modal-dialog .modal-content {
-  background-color: #78001d;
-}
-#body-profil section button, #body-profil section a {
-  color: white;
-  text-decoration: none;
-  border: none;
-  background: none;
-}
-#body-profil section button:hover, #body-profil section a:hover {
-  transition: all 0.3s ease-in-out;
-  text-decoration: underline;
-  font-weight: bold;
-}
-#body-profil section button:not(:hover), #body-profil section a:not(:hover) {
-  transition: all 0.3s ease-in-out;
+@media (max-width: 1500px) {
+  #body-connexion footer,
+  #body-inscription footer,
+  #body-prestation footer {
+    display: none;
+    visibility: hidden;
+  }
 }/*# sourceMappingURL=style.css.map */

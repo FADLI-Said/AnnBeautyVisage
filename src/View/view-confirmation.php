@@ -7,7 +7,7 @@
         include_once "../../templates/deco-nav.php";
     } ?>
     <section class="text-center">
-        <h1>
+        <h1 class="pt-3">
             Merci de votre inscription ! Vous pouvez dorénavant vous connecter.
             <i class="fa-solid fa-face-smile-wink"></i>
         </h1>

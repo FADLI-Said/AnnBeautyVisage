@@ -1,5 +1,6 @@
 <div class="nav purple topBotomBordersIn z-3">
-    <img src="/assets/images/traitement-de-beaute.png" alt="">
+    <a href="/src/Controller/controller-accueil.php"><img src="/assets/images/Logo_AnnBeautyVisage.png"
+            alt="Logo annBeautyVisage"></a>
     <div>
         <a href="/src/Controller/controller-accueil.php">Accueil</a>
         <a href="/src/Controller/controller-prestation.php">Prestation</a>

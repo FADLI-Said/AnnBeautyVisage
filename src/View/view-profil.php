@@ -7,12 +7,14 @@
         include_once "../../templates/deco-nav.php";
     } ?>
 
-    <section class="text-center">
-        <h1 class="py-3">Bonjour <?= $_SESSION["user_prenom"] ?></h1>
-        <h2 class="pb-3">Voici votre profil</h2>
+    <section>
+        <a href="../Controller/controller-accueil.php" class="w-100 text-start retour"><i class="fas fa-arrow-left"></i>
+            retour</a>
+        <h1 class="py-3 text-center">Bonjour <?= $_SESSION["user_prenom"] ?></h1>
+        <h2 class="pb-3 text-center">Voici votre profil</h2>
 
 
-        <div class="profil-container">
+        <div class="profil-container text-center">
             <div class="profil-card">
                 <h3 class="pb-3">Informations personnelles</h3>
                 <p><span class="fw-bold">Nom :</span> <?= $_SESSION["user_nom"] ?></p>
@@ -24,7 +26,7 @@
             </div>
 
 
-            <div class="d-flex flex-column align-items-center justify-content-center action">
+            <div class="d-flex flex-column align-items-center justify-content-center text-center action">
                 <h3>Actions</h3>
                 <button>Modifier le compte</button>
                 <button data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer le profil</button>
