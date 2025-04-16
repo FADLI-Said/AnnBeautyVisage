@@ -241,6 +241,39 @@ body #prestations .container tbody td div div {
   background-color: #37260c;
   color: #E6CAAB;
 }
+body #reservation {
+  padding-top: 2rem;
+}
+body #reservation .retour {
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  color: #37260c;
+  text-decoration: none;
+}
+body #reservation .retour:hover {
+  text-decoration: underline;
+  transition: all 0.3s;
+}
+body #reservation .container caption {
+  text-align: center;
+  color: #37260c;
+  caption-side: top;
+}
+body #reservation .container thead,
+body #reservation .container tbody {
+  border: #37260c 1px solid;
+}
+body #reservation .container thead th,
+body #reservation .container thead td,
+body #reservation .container tbody th,
+body #reservation .container tbody td {
+  padding: 0.5rem;
+  text-align: center;
+}
+body #reservation .container thead td,
+body #reservation .container tbody td {
+  border: #37260c 1px solid;
+}
 body footer {
   width: 100%;
   text-align: center;

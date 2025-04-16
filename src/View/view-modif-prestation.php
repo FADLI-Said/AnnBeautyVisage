@@ -35,7 +35,7 @@
                 <input type="text" class="form-control" id="prestation_duree" name="prestation_duree"
                     placeholder="Durée (en minutes)"
                     value="<?= $prestations["prestation_duree"] != null ? $prestations['prestation_duree'] : "00:00:00" ?>">
-                <label for="prestation_duree"><i class="fas fa-clock"></i> Durée (en minutes)</label>
+                <label for="prestation_duree"><i class="fas fa-clock"></i> Durée (HH:MM:SS)</label>
                 <p><?= $error["prestation_duree"] ?? "" ?></p>
             </div>
 

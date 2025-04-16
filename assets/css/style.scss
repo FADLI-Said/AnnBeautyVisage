@@ -79,70 +79,93 @@ body {
 
     #connexion,
     #inscription,
-    #modifier-prestation,
-    {
-    padding: 1rem 0;
+    #modifier-prestation {
+        padding: 1rem 0;
 
-    h1,
-    p {
-        text-align: center;
-    }
-
-    .retour {
-        padding-left: 2rem;
-        font-size: 1.3rem;
-        color: #37260c;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-            transition: all 0.3s;
+        h1,
+        p {
+            text-align: center;
         }
-    }
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
+        .retour {
+            padding-left: 2rem;
+            font-size: 1.3rem;
+            color: #37260c;
+            text-decoration: none;
 
-        .double {
+            &:hover {
+                text-decoration: underline;
+                transition: all 0.3s;
+            }
+        }
+
+        .container {
             display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             gap: 1rem;
-        }
 
-        div {
-            width: 100%;
-
-            input,
-            textarea {
-                background-color: #37260c;
-                color: #E6CAAB;
-
-                &:focus {
-                    background-color: #37260c;
-                }
-
-                &:-webkit-autofill {
-                    -webkit-box-shadow: 0 0 0 1000px #37260c inset !important;
-                    -webkit-text-fill-color: #E6CAAB !important;
-                }
-
-                &:focus:-webkit-autofill {
-                    -webkit-box-shadow: 0 0 0 1000px #37260c inset !important;
-                    -webkit-text-fill-color: #E6CAAB !important;
-                }
+            .double {
+                display: flex;
+                gap: 1rem;
             }
 
-            label {
-                color: #E6CAAB;
+            div {
+                width: 100%;
+
+                input,
+                textarea {
+                    background-color: #37260c;
+                    color: #E6CAAB;
+
+                    &:focus {
+                        background-color: #37260c;
+                    }
+
+                    &:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 1000px #37260c inset !important;
+                        -webkit-text-fill-color: #E6CAAB !important;
+                    }
+
+                    &:focus:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 1000px #37260c inset !important;
+                        -webkit-text-fill-color: #E6CAAB !important;
+                    }
+                }
+
+                label {
+                    color: #E6CAAB;
+                }
+
+                p {
+                    width: max-content;
+                    margin: 0 auto;
+                    color: red;
+                }
+
+                a {
+                    color: #37260c;
+                }
             }
 
             p {
                 width: max-content;
-                margin: 0 auto;
+                margin: 0rem auto;
                 color: red;
+            }
+
+            button {
+                background-color: #37260c;
+                color: #E6CAAB;
+                padding: 0 1rem;
+                text-transform: uppercase;
+
+                &:hover {
+                    color: #37260c;
+                    background-color: #E6CAAB;
+                    border: 1px solid #37260c;
+                }
             }
 
             a {
@@ -150,116 +173,132 @@ body {
             }
         }
 
-        p {
-            width: max-content;
-            margin: 0rem auto;
-            color: red;
-        }
-
-        button {
-            background-color: #37260c;
-            color: #E6CAAB;
-            padding: 0 1rem;
-            text-transform: uppercase;
-
-            &:hover {
+        div {
+            a {
                 color: #37260c;
-                background-color: #E6CAAB;
-                border: 1px solid #37260c;
-            }
-        }
+                text-decoration: none;
 
-        a {
-            color: #37260c;
-        }
-    }
-
-    div {
-        a {
-            color: #37260c;
-            text-decoration: none;
-
-            &:hover {
-                transition: all 0.3s;
-                text-decoration: underline;
-            }
-        }
-    }
-}
-
-#accueil {
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        a {
-            color: #37260c;
-        }
-    }
-}
-
-#prestations {
-    padding-top: 2rem;
-
-    .retour {
-        padding-left: 2rem;
-        font-size: 1.3rem;
-        color: #37260c;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-            transition: all 0.3s;
-        }
-    }
-
-    .container {
-
-        caption {
-            text-align: center;
-            color: #37260c;
-        }
-
-        thead,
-        tbody {
-
-            th,
-            td {
-                border: #37260c 1px solid;
-                padding: 0.5rem;
-
-                div {
-
-                    div {
-                        background-color: #37260c;
-                        color: #E6CAAB;
-                    }
+                &:hover {
+                    transition: all 0.3s;
+                    text-decoration: underline;
                 }
             }
         }
     }
 
-}
+    #accueil {
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-footer {
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 0.8rem;
-    color: #E6CAAB;
-    background-color: #37260c;
-    position: fixed;
-    bottom: 0;
-
-    figure {
-        figcaption {
-            color: #8a7256 !important;
-            font-size: 1rem !important;
+            a {
+                color: #37260c;
+            }
         }
     }
-}
+
+    #prestations {
+        padding-top: 2rem;
+
+        .retour {
+            padding-left: 2rem;
+            font-size: 1.3rem;
+            color: #37260c;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                transition: all 0.3s;
+            }
+        }
+
+        .container {
+
+            caption {
+                text-align: center;
+                color: #37260c;
+            }
+
+            thead,
+            tbody {
+
+                th,
+                td {
+                    border: #37260c 1px solid;
+                    padding: 0.5rem;
+
+                    div {
+
+                        div {
+                            background-color: #37260c;
+                            color: #E6CAAB;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    #reservation {
+        padding-top: 2rem;
+
+        .retour {
+            padding-left: 2rem;
+            font-size: 1.3rem;
+            color: #37260c;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                transition: all 0.3s;
+            }
+        }
+
+        .container {
+
+            caption {
+                text-align: center;
+                color: #37260c;
+                caption-side: top;
+            }
+
+            thead,
+            tbody {
+                border: #37260c 1px solid;
+                th,
+                td {
+                    padding: 0.5rem;
+                    text-align: center;
+                }
+
+                td{
+                    border: #37260c 1px solid;
+                }
+            }
+        }
+
+    }
+
+    footer {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.8rem;
+        color: #E6CAAB;
+        background-color: #37260c;
+        position: fixed;
+        bottom: 0;
+
+        figure {
+            figcaption {
+                color: #8a7256 !important;
+                font-size: 1rem !important;
+            }
+        }
+    }
 }
 
 @media (max-width:1500px) {
