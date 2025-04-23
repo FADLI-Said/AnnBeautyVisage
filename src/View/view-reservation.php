@@ -14,7 +14,7 @@
         <div class="d-flex justify-content-center">
             <button class="btn d-none" id="avant"><i class="fa-solid fa-chevron-left"></i></button>
 
-            <?php for ($offset = 0; $offset <= 2; $offset++): ?>
+            <?php for ($offset = 0; $offset <= 5; $offset++): ?>
                 <table class="container m-0 <?= $offset > 0 ? 'd-none' : '' ?>" id="mois<?= $offset ?>">
                     <caption>
                         <h2 class="text-center">
@@ -52,7 +52,11 @@
                                     echo "<td></td>";
                                 } else {
                                     $dayOfWeek = date("N", mktime(0, 0, 0, $Month, $currentDay, $Year));
-                                    echo "<td><a href='controller-date.php?month=" . $Month . "&numberDay=" . $currentDay . "&day=" . $dayOfWeek . "'>$currentDay</a></td>";
+                                    if ($dayOfWeek == 6 || $dayOfWeek == 7) {
+                                        echo "<td class='text-secondary'>$currentDay</td>";
+                                    } else {
+                                        echo "<td><a href='controller-date.php?month=" . $Month . "&numberDay=" . $currentDay . "&day=" . $dayOfWeek . "'>$currentDay</a></td>";
+                                    }
                                     $currentDay++;
                                 }
                             }
@@ -85,7 +89,7 @@
         });
 
         function updateVisibility() {
-            for (let i = 0; i <= 2; i++) {
+            for (let i = 0; i <= 4; i++) {
                 document.getElementById(`mois${i}`).classList.add("d-none");
             }
 
@@ -95,7 +99,7 @@
                 avant.classList.remove("d-none");
             }
 
-            if (newMonth === currentMonth + 2) {
+            if (newMonth === currentMonth + 4) {
                 apres.classList.add("d-none");
             } else {
                 apres.classList.remove("d-none");
