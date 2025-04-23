@@ -254,6 +254,9 @@ body #reservation .retour:hover {
   text-decoration: underline;
   transition: all 0.3s;
 }
+body #reservation button {
+  margin-top: 4rem;
+}
 body #reservation .container caption {
   text-align: center;
   color: #37260c;
@@ -273,6 +276,43 @@ body #reservation .container tbody td {
 body #reservation .container thead td,
 body #reservation .container tbody td {
   border: #37260c 1px solid;
+}
+body #reservation .container thead td a,
+body #reservation .container tbody td a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #37260c;
+}
+body #reservation .container thead td:has(a):hover,
+body #reservation .container tbody td:has(a):hover {
+  background-color: #37260c;
+  color: #E6CAAB;
+  transition: all 0.3s;
+  transform: scale(1.1);
+}
+body #reservation .container thead td:has(a):hover a,
+body #reservation .container tbody td:has(a):hover a {
+  color: #E6CAAB;
+}
+body #date h1 {
+  padding-top: 3rem;
+}
+body #date h2 {
+  padding-bottom: 3rem;
+}
+body #date div a {
+  color: #37260c;
+  text-decoration: none;
+}
+body #date div a div {
+  border: 1px solid #37260c;
+}
+body #date div a div:hover {
+  color: white;
+  background-color: #37260c;
+  transition: all 0.3s;
+  transform: scale(1.05);
 }
 body footer {
   width: 100%;

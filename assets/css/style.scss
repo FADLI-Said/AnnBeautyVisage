@@ -6,6 +6,7 @@ body {
         display: none;
     }
 
+    // ###### NAVIGATION ######
     .nav {
         font-family: "Raleway", sans-serif;
         margin: 0 auto;
@@ -77,6 +78,7 @@ body {
         }
     }
 
+    // ###### CONNEXION, INSCRIPTION, PRESTATION ####
     #connexion,
     #inscription,
     #modifier-prestation {
@@ -186,6 +188,7 @@ body {
         }
     }
 
+    // ###### ACCUEIL ######
     #accueil {
         .container {
             display: flex;
@@ -199,6 +202,7 @@ body {
         }
     }
 
+    // ###### PRESTATIONS ######
     #prestations {
         padding-top: 2rem;
 
@@ -242,6 +246,7 @@ body {
 
     }
 
+    // ###### RESERVATION ######
     #reservation {
         padding-top: 2rem;
 
@@ -257,6 +262,10 @@ body {
             }
         }
 
+        button {
+            margin-top: 4rem;
+        }
+
         .container {
 
             caption {
@@ -268,20 +277,71 @@ body {
             thead,
             tbody {
                 border: #37260c 1px solid;
+
                 th,
                 td {
                     padding: 0.5rem;
                     text-align: center;
                 }
 
-                td{
+                td {
                     border: #37260c 1px solid;
+
+                    a {
+                        display: block;
+                        width: 100%;
+                        text-decoration: none;
+                        color: #37260c;
+                    }
+
+                    &:has(a):hover {
+                        background-color: #37260c;
+                        color: #E6CAAB;
+                        transition: all 0.3s;
+                        transform: scale(1.1);
+
+                        a {
+                            color: #E6CAAB;
+                        }
+                    }
                 }
             }
         }
 
     }
 
+    // ###### DATE ######
+    #date {
+        h1 {
+            padding-top: 3rem;
+        }
+
+        h2 {
+            padding-bottom: 3rem;
+        }
+
+        div {
+            a {
+                color: #37260c;
+                text-decoration: none;
+
+                div {
+                    border: 1px solid #37260c;
+
+                    &:hover {
+                        color: white;
+                        background-color: #37260c;
+                        transition: all 0.3s;
+                        transform: scale(1.05);
+                    }
+                }
+
+
+            }
+        }
+    }
+
+    // ###### FOOTER ######
     footer {
         width: 100%;
         text-align: center;
