@@ -345,15 +345,19 @@ body #prestation #right button {
   color: #37260c;
   width: 50%;
 }
+body section {
+  margin-bottom: 5rem;
+}
 body footer {
   width: 100%;
   text-align: center;
   padding: 1rem 0;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   color: #E6CAAB;
   background-color: #37260c;
   position: fixed;
   bottom: 0;
+  height: 5rem;
 }
 body footer figure figcaption {
   color: #8a7256 !important;

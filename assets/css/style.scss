@@ -381,16 +381,21 @@ body {
         }
     }
 
+    section{
+        margin-bottom: 5rem;
+    }
+
     // ###### FOOTER ######
     footer {
         width: 100%;
         text-align: center;
         padding: 1rem 0;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         color: #E6CAAB;
         background-color: #37260c;
         position: fixed;
         bottom: 0;
+        height: 5rem;
 
         figure {
             figcaption {

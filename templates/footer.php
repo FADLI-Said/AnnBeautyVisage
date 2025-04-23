@@ -26,9 +26,9 @@ $randomAuthor = $auteur[$randomIndex];
         </figcaption>
     </figure>
 
-    <div class="container text-center">
+    <!-- <div class="container text-center">
         <p>&copy; <?= date("Y"); ?> Mon Site Web. Tous droits réservés.</p>
-    </div>
+    </div> -->
 </footer>
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="https://kit.fontawesome.com/50a1934b21.js" crossorigin="anonymous"></script>
