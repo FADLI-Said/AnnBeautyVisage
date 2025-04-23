@@ -16,7 +16,7 @@
 
             for ($i = 9; $i <= 17; $i++) {
                 for ($j = 0; $j < 60; $j += 30) { ?>
-                    <a class='col-4 text-center' href='controller-conf_rdv.php'>
+                    <a class='col-4 text-center' href='controller-conf_rdv.php?month=<?= $_GET["month"] ?>&numberDay=<?= $_GET["numberDay"] ?>&day=<?= $_GET["day"] ?>'>
                         <div><?= $i ?>:<?= sprintf("%02d", $j) ?></div>
                     </a>
             <?php

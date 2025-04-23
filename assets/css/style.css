@@ -314,6 +314,37 @@ body #date div a div:hover {
   transition: all 0.3s;
   transform: scale(1.05);
 }
+body #prestation {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  color: #37260c;
+}
+body #prestation #left {
+  width: 60%;
+  font-size: 0.9rem;
+}
+body #prestation #left a {
+  text-decoration: none;
+  color: #E6CAAB;
+  background-color: #37260c;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+body #prestation #left a:hover {
+  background-color: #37260c;
+  transition: all 0.3s;
+  transform: scale(1.05);
+}
+body #prestation #right {
+  width: 40%;
+}
+body #prestation #right button {
+  border: none;
+  background-color: #E6CAAB;
+  color: #37260c;
+  width: 50%;
+}
 body footer {
   width: 100%;
   text-align: center;
@@ -332,7 +363,7 @@ body footer figure figcaption {
 @media (max-width: 1500px) {
   #body-connexion footer,
   #body-inscription footer,
-  #body-prestation footer {
+  #body-admin footer {
     display: none;
     visibility: hidden;
   }

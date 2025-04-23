@@ -1,13 +1,13 @@
 <?php require_once "../../templates/header.php" ?>
 
-<body id="body-prestation">
+<body id="body-admin">
     <?php if (isset($_SESSION["user_mail"])) {
         include_once "../../templates/co-nav.php";
     } else {
         include_once "../../templates/deco-nav.php";
     } ?>
 
-    <section id="prestations">
+    <section id="admin">
         <a href="../Controller/controller-accueil.php" class="w-100 text-start retour"><i class="fas fa-arrow-left"></i>
             Accueil</a>
         <table class="container">
