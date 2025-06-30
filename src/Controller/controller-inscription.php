@@ -43,6 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $error["telephone"] = "<i class='fa-solid fa-circle-exclamation'></i> Le téléphone est obligatoire.";
         } elseif (!preg_match($regex_phone, $_POST["telephone"])) {
             $error["telephone"] = "<i class='fa-solid fa-circle-exclamation'></i> Le téléphone doit être au format 06/07.";
+        } else {
+            $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "SELECT user_telephone FROM 76_users WHERE user_telephone = :telephone";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(":telephone", $_POST["telephone"]);
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                $error["telephone"] = "<i class='fa-solid fa-circle-exclamation'></i> Le numéro de téléphone existe déjà.";
+            }
         }
     }
 
@@ -54,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bindValue(":email", $_POST["email"]);
     $stmt->execute();
     $stmt->rowCount() == 0 ? $found = false : $found = true;
-
 
     if (isset($_POST["email"])) {
         if (empty($_POST["email"])) {

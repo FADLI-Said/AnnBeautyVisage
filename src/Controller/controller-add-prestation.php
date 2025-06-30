@@ -2,23 +2,22 @@
 session_start();
 include_once "../../config.php";
 include_once "../Model/model-prestation.php";
-$regex_image = "/^[a-zA-Z0-9_\-]+\.(jpg|jpeg|png|gif)$/";
 $regex_name = "/^[a-zA-ZÀ-ú\s'-]+$/";
 $regex_description = "/^[a-zA-ZÀ-ú0-9\s.,'()-]+$/";
 $regex_price = "/^[0-9]{1,3}(?:\.[0-9]{1,2})?$/";
 $regex_duration = "/^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/";
+$regex_image = "/^[a-zA-Z0-9_\-]+\.(jpg|jpeg|png|gif)$/";
 
 // if ($_SESSION["user_role"] != "admin") {
 //     header("Location: ../Controller/controller-accueil.php");
 //     exit;
 // }
-$prestations = Prestations::getPrestationById($_GET["prestation"]);
 
 $error = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES["prestation_image"])) {
-        if (empty($_FILES["prestation_image"]["name"])) {
+        if (empty($_FILES["prestation_image"])) {
             $error["prestation_image"] = "<i class='fa-solid fa-circle-exclamation'></i> Veuillez renseigner l'image de la prestation.";
         } elseif (!preg_match($regex_image, $_FILES["prestation_image"]["name"])) {
             $error["prestation_image"] = "<i class='fa-solid fa-circle-exclamation'></i> L'image doit être au format jpg, jpeg, png ou gif.";
@@ -58,45 +57,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($error)) {
-        $prestation = Prestations::getPrestationById($_GET["prestation"]);
-
-        if (!empty($_FILES["prestation_image"]["name"])) {
-            $targetDir = "../../assets/images/";
-            $originalName = $_FILES["prestation_image"]["name"];
-            $imageFileType = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
-            $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
-
-            if (in_array($imageFileType, $allowedTypes)) {
-                // Générer un nom unique
-                $uniqueName = uniqid() . '_' . $originalName;
-                $targetFile = $targetDir . $uniqueName;
-                if ($uniqueName != $prestation["prestation_image"]) {
-                    $oldImagePath = $targetDir . $prestation['prestation_image'];
-                    if (file_exists($oldImagePath)) {
-                        unlink($oldImagePath);
-                    }
-                }
-                move_uploaded_file($_FILES["prestation_image"]["tmp_name"], $targetFile);
-                $imageName = $uniqueName;
-            } else {
-                $error["prestation_image"] = "<i class='fa-solid fa-circle-exclamation'></i> Format d'image non supporté.";
-                $imageName = $prestation["prestation_image"];
-            }
-        } else {
-            $imageName = $prestation["prestation_image"];
+        $target_dir = "../../assets/images/";
+        $newName = null;
+        if (isset($_FILES["prestation_image"]) && isset($_FILES["prestation_image"]["name"]) && !empty($_FILES["prestation_image"]["name"])) {
+            $newName = uniqid() . "_" . basename($_FILES["prestation_image"]["name"]);
+            $target_file = $target_dir . $newName;
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         }
 
-        Prestations::updatePrestation(
-            $_GET["prestation"],
-            $imageName,
-            htmlspecialchars($_POST["prestation_nom"]),
-            htmlspecialchars($_POST["prestation_description"]),
-            htmlspecialchars($_POST["prestation_prix"]),
-            htmlspecialchars($_POST["prestation_duree"])
-        );
-        header("Location: controller-admin.php");
-        exit;
+        if ($newName && !empty($_POST["prestation_description"])) {
+            if (move_uploaded_file($_FILES["prestation_image"]["tmp_name"], $target_file)) {
+                echo "The file " . htmlspecialchars(basename($_FILES["prestation_image"]["name"])) . " a été téléchargé.";
+            } else {
+                echo "Désolé, il y a eu une erreur lors du téléchargement de votre fichier.";
+            }
+
+            Prestations::createPrestation($newName, $_POST["prestation_nom"], $_POST["prestation_description"], $_POST["prestation_prix"], $_POST["prestation_duree"]);
+            header("Location: ../Controller/controller-admin.php");
+            exit;
+        }
     }
 }
 
-include_once "../View/view-modif-prestation.php";
+include_once "../View/view-add-prestation.php";

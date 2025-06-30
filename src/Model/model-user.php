@@ -25,5 +25,3 @@ class User
         return $info;
     }
 }
-
-?>

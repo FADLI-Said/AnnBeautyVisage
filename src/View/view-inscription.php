@@ -8,59 +8,71 @@
     } ?>
 
     <section id="inscription">
-        <a href="../Controller/controller-connexion.php" class="w-100 text-start retour"><i
+        <a href="../Controller/controller-connexion.php" class="text-start retour"><i
                 class="fas fa-arrow-left"></i>
             Connexion</a>
+        <form type="submit" class="container form-floating mt-5 p-4 rounded" method="POST" novalidate>
             <h1>Inscription</h1>
             <p>Inscrivez-vous pour réserver vos soins de beauté.</p>
-        <form type="submit" class="container form-floating mt-5" method="POST" novalidate>
             <div class="double">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom"
+                    <input type="text" class="form-control bg-dark" id="nom" name="nom" placeholder=""
                         value="<?= $_POST['nom'] ?? '' ?>" required>
-                    <label for="nom"><i class="fas fa-user"></i> Nom</label>
-                    <p><?= $error["nom"] ?? "" ?></p>
+                    <label class="text-white" for="nom"><i class="fas fa-user"></i> Nom</label>
+                    <p class="text-danger m-0 p-2">
+                        <?= $error["nom"] ?? "" ?>
+                    </p>
                 </div>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom"
+                    <input type="text" class="form-control bg-dark" id="prenom" name="prenom" placeholder=""
                         value="<?= $_POST['prenom'] ?? '' ?>" required>
-                    <label for="prenom"><i class="fas fa-user"></i> Prénom</label>
-                    <p><?= $error["prenom"] ?? "" ?></p>
+                    <label class="text-white" for="prenom"><i class="fas fa-user"></i> Prénom</label>
+                    <p class="text-danger m-0 p-2">
+                        <?= $error["prenom"] ?? "" ?>
+                    </p>
                 </div>
             </div>
 
             <div class="form-floating">
-                <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Téléphone"
+                <input type="tel" class="form-control bg-dark" id="telephone" name="telephone" placeholder=""
                     value="<?= $_POST['telephone'] ?? '' ?>" required>
-                <label for="telephone"><i class="fas fa-phone"></i> Téléphone</label>
-                <p><?= $error["telephone"] ?? "" ?></p>
+                <label class="text-white" for="telephone"><i class="fas fa-phone"></i> Téléphone</label>
+                <p class="text-danger m-0 p-2">
+                    <?= $error["telephone"] ?? "" ?>
+                </p>
             </div>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Adresse Mail"
+                <input type="email" class="form-control bg-dark" id="email" name="email" placeholder=""
                     value="<?= $_POST['email'] ?? '' ?>" required>
-                <label for="email"><i class="fas fa-envelope"></i> Adresse Mail</label>
-                <p><?= $error["email"] ?? "" ?></p>
+                <label class="text-white" for="email"><i class="fas fa-envelope"></i> Adresse Mail</label>
+                <p class="text-danger m-0 p-2">
+                    <?= $error["email"] ?? "" ?>
+                </p>
             </div>
 
             <div class="double">
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="mot_de_passe" name="mot_de_passe"
-                        placeholder="Mot de passe" value="<?= $_POST['mot_de_passe'] ?? '' ?>" required>
-                    <label for="mot_de_passe"><i class="fas fa-lock"></i> Mot de passe</label>
-                    <p><?= $error["mot_de_passe"] ?? "" ?></p>
+                    <input type="password" class="form-control bg-dark" id="mot_de_passe" name="mot_de_passe"
+                        placeholder="" value="<?= $_POST['mot_de_passe'] ?? '' ?>" required>
+                    <label class="text-white" for="mot_de_passe"><i class="fas fa-lock"></i> Mot de passe</label>
+                    <p class="text-danger m-0 p-2">
+                        <?= $error["mot_de_passe"] ?? "" ?>
+                    </p>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="confirmation_mot_de_passe"
-                        name="confirmation_mot_de_passe" placeholder="Confirmation mot de passe"
+                    <input type="password" class="form-control bg-dark" id="confirmation_mot_de_passe"
+                        name="confirmation_mot_de_passe" placeholder=""
                         value="<?= $_POST['confirmation_mot_de_passe'] ?? '' ?>" required>
-                    <label for="confirmation_mot_de_passe"><i class="fas fa-lock"></i> Confirmation mot de
+                    <label class="text-white" for="confirmation_mot_de_passe"><i class="fas fa-lock"></i> Confirmation mot de
                         passe</label>
-                    <p><?= $error["confirmation_mot_de_passe"] ?? "" ?></p>
+                    <p class="text-danger m-0 p-2">
+                        <?= $error["confirmation_mot_de_passe"] ?? "" ?>
+                    </p>
                 </div>
             </div>
 
-            <button type="submit" class="mt-3 btn">Inscription</button>
+            <button type="submit" class="btn btn-outline-light text-end">Inscription</button>
         </form>
     </section>
 

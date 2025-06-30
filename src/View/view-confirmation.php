@@ -6,7 +6,7 @@
     } else {
         include_once "../../templates/deco-nav.php";
     } ?>
-    <section class="text-center">
+    <section class="text-center d-flex flex-column align-items-center justify-content-center vh-100 text-white">
         <h1 class="pt-3">
             Merci de votre inscription ! Vous pouvez dorénavant vous connecter.
             <i class="fa-solid fa-face-smile-wink"></i>

@@ -1,34 +1,45 @@
-<?php
-
-$quote = [
-    "La beauté commence au moment où vous décidez d'être vous-même.",
-    "La beauté est une lumière dans le cœur.",
-    "La vraie beauté d'une femme se reflète dans son âme.",
-    "La beauté est éternelle quand elle vient de l'intérieur.",
-    "La beauté est une promesse de bonheur."
-];
-
-$auteur = ["Coco Chanel", "Khalil Gibran", "Audrey Hepburn", "Sophia Loren", "Stendhal"];
-
-$randomIndex = array_rand($quote);
-$randomQuote = $quote[$randomIndex];
-$randomAuthor = $auteur[$randomIndex];
-
-?>
-
 <footer>
-    <figure class="text-center">
-        <blockquote class="blockquote">
-            <p>"<?= $randomQuote ?>"</p>
-        </blockquote>
-        <figcaption class="blockquote-footer">
-            <?= $randomAuthor ?>
-        </figcaption>
-    </figure>
-
-    <!-- <div class="container text-center">
-        <p>&copy; <?= date("Y"); ?> Mon Site Web. Tous droits réservés.</p>
-    </div> -->
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <h5>Contact</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fa-solid fa-location-dot me-2"></i>3 Rue Maximilien Robespierre, 76610 Le Havre
+                    </li>
+                    <li><i class="fa-solid fa-phone me-2"></i>+33 6 27 40 63 90</li>
+                    <li><i class="fa-solid fa-envelope me-2"></i>contact@annbeautyvisage.fr</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h5>Nous trouver</h5>
+                <div class="ratio ratio-16x9 rounded shadow">
+                    <iframe src="https://www.google.com/maps?q=3+Rue+Maximilien+Robespierre,+Havre&output=embed"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        title="Carte AnnBeautyVisage"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3 small">
+            &copy; 2024 AnnBeautyVisage. Tous droits réservés.
+        </div>
+    </div>
 </footer>
+
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="https://kit.fontawesome.com/50a1934b21.js" crossorigin="anonymous"></script>
+<script>
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 0) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Ajoute une transition CSS pour la navbar
+    document.addEventListener('DOMContentLoaded', function() {
+        const nav = document.getElementById('navbar');
+        nav.style.transition = 'background-color 0.3s, box-shadow 0.3s';
+    });
+</script>
