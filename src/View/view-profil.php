@@ -7,7 +7,7 @@
         include_once "../../templates/deco-nav.php";
     } ?>
 
-    <section id="profil">
+    <section id="profil" data-bs-theme="dark">
         <a href="../Controller/controller-accueil.php" class="text-start retour"><i class="fas fa-arrow-left"></i>
             Accueil</a>
         <h1 class="py-3 text-center">Bonjour <?= $_SESSION["user_prenom"] ?></h1>
@@ -25,28 +25,57 @@
                 </p>
 
                 <div>
-                    <p class="h1">Tout vos RDV chez nous !</p>
-                    <?php if (!isset($rdv["rdv_id"])) {  ?>
+                    <p class="h1">Tous vos RDV chez nous !</p>
+                    <?php if (empty($userRdv)) { ?>
                         <p>Aucun RDV pour le moment</p>
+                    <?php } else { ?>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 p-3">
+                            <?php foreach ($userRdv as $rdv) {
+                                // Format date
+                                $date = date('d/m/Y', strtotime($rdv['reservation_date']));
+                                // Format heure Hhmm
+                                $start = ltrim(date('G\hi', strtotime($rdv['reservation_start'])), '0');
+                                $end = ltrim(date('G\hi', strtotime($rdv['reservation_end'])), '0');
+                                // Format durée
+                                $duree = ltrim(date('G\hi', strtotime($rdv['prestation_duree'])), '0');
+                            ?>
+                                <div class="col">
+                                    <div class="card shadow border border-light h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-2"><?= htmlspecialchars($rdv['prestation_nom']) ?></h5>
+                                            <p class="card-text mb-1"><strong>Date :</strong> <?= $date ?></p>
+                                            <p class="card-text mb-1"><strong>Heure :</strong> <?= $start ?> - <?= $end ?></p>
+                                            <p class="card-text mb-1"><strong>Durée :</strong> <?= $duree ?></p>
+                                            <p class="card-text mb-1"><strong>Prix :</strong> <?= number_format($rdv['prestation_prix'], 2, ',', ' ') ?> €</p>
+                                            <?php if (!empty($rdv['prestation_image'])) { ?>
+                                                <img src="../../assets/images/<?= htmlspecialchars($rdv['prestation_image']) ?>" alt="Image prestation" class="img-fluid rounded mt-2">
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
 
 
-            <div class="d-flex flex-column align-items-center justify-content-center text-center action pt-5">
-                <h3>Actions</h3>
-                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer le profil</button>
-                <button class="btn btn-outline-light mt-2" data-bs-toggle="modal" data-bs-target="#deconnecter">Se déconnecter</button>
+            <div class="d-flex flex-column align-items-center justify-content-center text-center action mt-3">
+                <div class="d-flex flex-column align-items-center justify-content-center text-center action">
+                    <h3>Actions</h3>
+                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#supprimer">Supprimer le profil</button>
+                    <button class="btn btn-outline-light mt-2" data-bs-toggle="modal" data-bs-target="#deconnecter">Se déconnecter</button>
+                </div>
 
-                <div data-bs-theme="dark" class="modal fade" id="deconnecter" tabindex="-1"
+                <div class="modal fade" id="deconnecter" tabindex="-1"
                     aria-labelledby="deconnecterLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                        <div class="modal-content" style="background-color: #FFEFC1;">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5 text-white" id="deconnecterLabel">Confirmation de déconnexion
+                                <h1 class="modal-title fs-5" id="deconnecterLabel">Confirmation de déconnexion
                                 </h1>
                             </div>
-                            <div class="modal-body text-white">
+                            <div class="modal-body">
                                 Êtes-vous sûr de vouloir vous déconnecter ? Vous serez redirigé vers la page d'accueil.
                             </div>
                             <div class="modal-footer">
@@ -58,15 +87,15 @@
                     </div>
                 </div>
 
-                <div data-bs-theme="dark" class="modal fade" id="supprimer" tabindex="-1" aria-labelledby="supprimerLabel"
+                <div class="modal fade" id="supprimer" tabindex="-1" aria-labelledby="supprimerLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
+                        <div class="modal-content" style="background-color: #FFEFC1;">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5 text-white" id="supprimerLabel">Confirmation de suppression
+                                <h1 class="modal-title fs-5" id="supprimerLabel">Confirmation de suppression
                                 </h1>
                             </div>
-                            <div class="modal-body text-white">
+                            <div class="modal-body">
                                 Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est irréversible.
                             </div>
                             <div class="modal-footer">
@@ -175,8 +204,8 @@
         <?php } else {
         ?>
             <button class="btn btn-outline-light container<?= $hasErrors ? ' d-none' : '' ?>" id="avis-btn">Mettre un avis</button>
-            <form method="post" class="container avis-container justify-content-center" data-bs-theme="dark" novalidate>
-                <div class="avis-container flex-column gap-4<?= $hasErrors ? ' d-flex' : ' d-none' ?>" onclick="event.stopPropagation();">
+            <form method="post" class="container avis-form-nouveau justify-content-center avis-container<?= $hasErrors ? ' d-flex' : ' d-none' ?>" data-bs-theme="dark" novalidate>
+                <div class="flex-column gap-4 d-flex" onclick="event.stopPropagation();">
                     <div class="form-group">
                         <label for="avis">Votre avis :</label>
                         <textarea class="form-control" id="avis-textarea-nouveau" rows="3" name="description"></textarea>
@@ -215,9 +244,12 @@
         if (avisBtn) {
             avisBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const avisContainer = document.querySelector('.avis-container');
-                avisContainer.classList.remove('d-none');
-                avisContainer.classList.add('d-flex');
+                // On cible le bon formulaire d'avis (celui pour "mettre un avis", pas le modif)
+                const avisFormNouveau = document.querySelector('.avis-form-nouveau');
+                if (avisFormNouveau) {
+                    avisFormNouveau.classList.remove('d-none');
+                    // avisFormNouveau.classList.add('d-flex');
+                }
                 avisBtn.classList.add('d-none');
             });
         }
@@ -229,7 +261,7 @@
             modifBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 formModif.classList.remove('d-none');
-                formModif.classList.add('d-flex');
+                // formModif.classList.add('d-flex');
                 blocAvis.classList.add('d-none');
                 modifBtn.classList.add('d-none');
             });

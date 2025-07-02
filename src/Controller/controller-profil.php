@@ -48,4 +48,8 @@ $userRatings = Rating::getRatingsByUserId($_SESSION['user_id']);
 
 
 
+// Récupérer les rendez-vous de l'utilisateur
+include_once "../Model/model-reservation.php";
+$userRdv = getReservationsByUser($_SESSION['user_id']);
+
 include_once "../View/view-profil.php";

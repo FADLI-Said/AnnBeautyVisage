@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 body {
-  background-color: #111;
   font-family: "Montserrat", sans-serif;
 }
 body #navbar {
@@ -12,9 +11,12 @@ body #navbar {
   box-sizing: border-box;
 }
 body #navbar.scrolled {
-  background-color: rgba(0, 0, 0, 0.8784313725);
+  background-color: #FFEFC1;
   z-index: 5;
   border-bottom: #555 1px solid;
+}
+body #navbar.scrolled a {
+  color: black;
 }
 body #navbar a {
   color: white;
@@ -53,7 +55,7 @@ body #navbar ul a::before {
 body #navbar ul a:hover::before, body #navbar ul a:hover::after {
   width: 100%;
   height: 100%;
-  border-color: #A6A6A6;
+  border-color: grey;
 }
 body header {
   height: 100vh;
@@ -65,8 +67,6 @@ body header {
   color: white;
 }
 body h2 {
-  color: white;
-  background-color: #23272f;
   margin: 0;
   padding: 1rem 0;
 }
@@ -75,7 +75,6 @@ body section {
   justify-content: center;
   gap: 2rem;
   padding-bottom: 3rem;
-  background-color: #23272f;
 }
 body section #prestations {
   width: 65%;
@@ -87,12 +86,11 @@ body section #prestations .prestation img {
   width: 100%;
 }
 body section #prestations .prestation h3 {
-  color: white;
+  color: black;
   margin: 0;
   font-size: 1.2rem;
 }
 body section #prestations .prestation:hover {
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
   transform: translateY(-5px);
   transition: 0.3s ease-in;
 }
@@ -101,7 +99,6 @@ body section #horraires {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  color: white;
 }
 body section #horraires #note {
   flex-grow: 1;
@@ -111,14 +108,16 @@ body section #horraires #note {
 body section #horraires #note .overflow-auto {
   flex-grow: 1;
   height: 20rem;
-  scrollbar-color: #555 #111;
   padding: 1rem;
 }
 body section #horraires #note button {
-  color: white;
+  color: black;
+  --bs-border-color: black;
 }
 body section #horraires #note button.active {
-  background-color: black;
+  font-weight: bold;
+  background-color: #FFEFC1;
+  border-bottom: none;
 }
 body section#inscription {
   min-height: 100vh;
@@ -477,7 +476,6 @@ body section#admin {
   background-size: cover;
   background-position: bottom;
   padding-top: 4.5rem;
-  color: white;
   display: flex;
   flex-direction: column;
 }
@@ -495,6 +493,103 @@ body section#admin .retour {
 body section#admin .retour:hover {
   text-decoration: underline;
   transition: all 0.3s;
+}
+body section#admin #calendrier-admin {
+  width: 70%;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+}
+body section#admin #calendrier-admin ul {
+  background-color: #FFEFC1 !important;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+body section#admin #calendrier-admin ul button {
+  color: #2d323c;
+}
+body section#admin #calendrier-admin ul button.active {
+  background-color: #fadb80;
+}
+body section#admin #calendrier-admin #mois {
+  width: 100%;
+}
+body section#admin #calendrier-admin #mois .calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+body section#admin #calendrier-admin #mois .calendar-header .calendar-month {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+body section#admin #calendrier-admin #mois .calendar-header .calendar-nav {
+  background: #2d323c;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  color: #bbb;
+  transition: background 0.2s;
+}
+body section#admin #calendrier-admin #mois .calendar-header .calendar-nav:hover {
+  background: #444b58;
+}
+body section#admin #calendrier-admin #mois .calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+body section#admin #calendrier-admin #mois .calendar-grid .calendar-day {
+  background: #fadb80;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #555;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+body section#admin #calendrier-admin #mois .calendar-grid .calendar-day:hover:not(.calendar-day-label):not(.calendar-empty) {
+  background: #555;
+  color: #fadb80;
+}
+body section#admin #calendrier-admin #mois .calendar-grid .week-end {
+  background: #212529;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: #e2e6ed;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  cursor: default;
+}
+body section#admin #calendrier-admin #mois .calendar-grid .calendar-day-label {
+  background: transparent;
+  font-weight: bold;
+  color: #8a8fa3;
+  padding-bottom: 4px;
+}
+body section#admin #calendrier-admin #mois .calendar-grid .calendar-empty {
+  background: transparent;
+  cursor: default;
+}
+@media (max-width: 500px) {
+  body section#admin #calendrier-admin #mois .calendar-container.dark {
+    padding: 12px 2px 8px 2px;
+    min-width: 0;
+  }
+  body section#admin #calendrier-admin #mois .calendar-day {
+    font-size: 0.9rem;
+    padding: 7px 0;
+  }
 }
 body section#ajouter-prestation, body section#modifier-prestation {
   height: 100vh;
@@ -523,6 +618,6 @@ body section#ajouter-prestation form label, body section#modifier-prestation for
   color: black;
 }
 body footer {
-  background-color: #000;
-  color: white;
+  background-color: #FFEFC1;
+  border-top: #555 1px solid;
 }/*# sourceMappingURL=style.css.map */

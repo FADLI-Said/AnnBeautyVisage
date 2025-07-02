@@ -1,6 +1,6 @@
 <?php require_once "../../templates/header.php" ?>
 
-<body id="body-prestation">
+<body id="body-prestation" data-bs-theme="dark">
     <?php if (isset($_SESSION["user_mail"])) {
         include_once "../../templates/co-nav.php";
     } else {

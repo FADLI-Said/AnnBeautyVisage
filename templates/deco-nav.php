@@ -9,7 +9,7 @@
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="controller-accueil.php">
+                    <a class="nav-link" href="controller-accueil.php">
                         <i class="fas fa-home"></i> Accueil
                     </a>
                 </li>

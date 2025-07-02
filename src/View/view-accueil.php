@@ -1,6 +1,6 @@
 <?php require_once "../../templates/header.php" ?>
 
-<body id="body-accueil">
+<body id="body-accueil" class="bg-warning bg-opacity-25">
     <?php if (isset($_SESSION["user_mail"])) {
         include_once "../../templates/co-nav.php";
     } else {
@@ -28,17 +28,17 @@
         </div>
     </header>
 
-    <h2 class="text-center">
+    <h2 class="text-center" data-bs-theme="light">
         Prestations
     </h2>
 
     <section>
-        <div class="rounded" id="prestations">
-            <div class="row row-cols-lg-3 g-3">
+        <div class="rounded" id="prestations" data-bs-theme="light">
+            <div class="row row-cols-lg-3 g-4">
                 <?php foreach ($prestations as $value) { ?>
                     <div class="col">
                         <a href="../Controller/controller-reservation.php?prestation=<?= $value["prestation_id"] ?>" class="text-decoration-none">
-                            <div class="prestation rounded">
+                            <div class="prestation rounded shadow">
                                 <div class="border border-bottom-0 rounded-top">
                                     <img src="../../assets/images/<?= $value["prestation_image"] ?>" class="rounded-top img-fluid"
                                         alt="Image de la prestation : <?= $value["prestation_nom"] ?>">
@@ -46,7 +46,7 @@
                                 <div
                                     class="px-4 py-2 border border-top-0 rounded-bottom d-flex justify-content-between flex-column gap-3">
                                     <h3 class="text-center"><?= $value["prestation_nom"] ?></h3>
-                                    <a href="../Controller/controller-reservation.php?prestation=<?= $value["prestation_id"] ?>" class="btn btn-outline-light choisir">
+                                    <a href="../Controller/controller-reservation.php?prestation=<?= $value["prestation_id"] ?>" class="btn btn-outline-dark choisir">
                                         <i class="fa-regular fa-calendar-check"></i> Prendre RDV <i class="fa-solid fa-chevron-right"></i>
                                     </a>
                                 </div>
@@ -121,7 +121,7 @@
                             <p class="h1"><?= $stars ?></p>
                             <p class="h1 mt-4"><?= round($averageRating, 2) ?>/5</p>
                             <p>Avis : <?= $totalRatings ?> personnes ont données leurs avis</p>
-                            <a class="btn btn-outline-light" href="../Controller/controller-profil.php">Laisse ton avis !!!</a>
+                            <a class="btn btn-outline-dark" href="../Controller/controller-profil.php">Laisse ton avis !!!</a>
                         </div>
 
                     </div>

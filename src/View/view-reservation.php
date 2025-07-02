@@ -71,8 +71,9 @@
                                 <div class="calendar-day calendar-day-label">Dim</div>
 
                                 <?php
-                                for ($i = 1; $i < $firstDayOfWeek; $i++) {
-                                    echo '<a class="calendar-day calendar-empty"></a>';
+                                for ($i = 1; $i < $firstDayOfWeek; $i++) { ?>
+                                    <a class="calendar-day calendar-empty"></a>
+                                    <?php
                                 }
 
                                 for ($dayNum = 1; $dayNum <= $daysInMonth; $dayNum++) {
@@ -84,17 +85,17 @@
 
                                     if ($isPastDay || $isWeekend) {
                                         $classNames = "week-end";
-                                ?>
+                                    ?>
                                         <a class="<?= $classNames ?>"><?= $dayNum ?></a>
                                     <?php } else { ?>
                                         <a class="calendar-day calendar-selectable-day" href="#" data-date="<?= $Year ?>-<?= sprintf('%02d', $Month) ?>-<?= sprintf('%02d', $dayNum) ?>"><?= $dayNum ?></a>
-                                <?php }
+                                    <?php }
                                 }
 
                                 $lastDayOfWeek = date("N", mktime(0, 0, 0, $Month, $daysInMonth, $Year));
-                                for ($i = $lastDayOfWeek; $i < 7; $i++) {
-                                    echo '<a class="calendar-day calendar-empty"></a>';
-                                }
+                                for ($i = $lastDayOfWeek; $i < 7; $i++) { ?>
+                                    <a class="calendar-day calendar-empty"></a>
+                                <?php } ?>
                                 ?>
                             </div>
                         </div>
@@ -124,7 +125,10 @@
                 // Affichage de la date sélectionnée au format français
                 if (selectedDate) {
                     const dateObj = new Date(selectedDate);
-                    const options = { day: 'numeric', month: 'long' };
+                    const options = {
+                        day: 'numeric',
+                        month: 'long'
+                    };
                     const dateFr = dateObj.toLocaleDateString('fr-FR', options);
                     horairesDiv.innerHTML = `<div style="font-weight:bold;font-size:1.2rem;margin-bottom:0.5rem;">${dateFr.charAt(0).toUpperCase() + dateFr.slice(1)}</div><div>Chargement des créneaux...</div>`;
                 } else {
@@ -143,7 +147,10 @@
                         // Réaffiche la date sélectionnée si erreur
                         if (selectedDate) {
                             const dateObj = new Date(selectedDate);
-                            const options = { day: 'numeric', month: 'long' };
+                            const options = {
+                                day: 'numeric',
+                                month: 'long'
+                            };
                             const dateFr = dateObj.toLocaleDateString('fr-FR', options);
                             horairesDiv.innerHTML = `<div style=\"font-weight:bold;font-size:1.2rem;margin-bottom:0.5rem;\">${dateFr.charAt(0).toUpperCase() + dateFr.slice(1)}</div><div>Erreur: ${data.error}</div>`;
                         } else {
@@ -154,7 +161,10 @@
                     if (data.message) {
                         if (selectedDate) {
                             const dateObj = new Date(selectedDate);
-                            const options = { day: 'numeric', month: 'long' };
+                            const options = {
+                                day: 'numeric',
+                                month: 'long'
+                            };
                             const dateFr = dateObj.toLocaleDateString('fr-FR', options);
                             horairesDiv.innerHTML = `<div style=\"font-weight:bold;font-size:1.2rem;margin-bottom:0.5rem;\">${dateFr.charAt(0).toUpperCase() + dateFr.slice(1)}</div><div>${data.message}</div>`;
                         } else {
@@ -165,7 +175,10 @@
                     if (data.length === 0) {
                         if (selectedDate) {
                             const dateObj = new Date(selectedDate);
-                            const options = { day: 'numeric', month: 'long' };
+                            const options = {
+                                day: 'numeric',
+                                month: 'long'
+                            };
                             const dateFr = dateObj.toLocaleDateString('fr-FR', options);
                             horairesDiv.innerHTML = `<div style=\"font-weight:bold;font-size:1.2rem;margin-bottom:0.5rem;\">${dateFr.charAt(0).toUpperCase() + dateFr.slice(1)}</div><div>Aucun créneau disponible pour ce jour.</div>`;
                         } else {
@@ -183,7 +196,10 @@
                     // Réaffiche la date sélectionnée au-dessus des créneaux
                     if (selectedDate) {
                         const dateObj = new Date(selectedDate);
-                        const options = { day: 'numeric', month: 'long' };
+                        const options = {
+                            day: 'numeric',
+                            month: 'long'
+                        };
                         const dateFr = dateObj.toLocaleDateString('fr-FR', options);
                         horairesDiv.innerHTML = `<div style=\"font-weight:bold;font-size:1.2rem;margin-bottom:0.5rem;\">${dateFr.charAt(0).toUpperCase() + dateFr.slice(1)}</div>` + slotsHtml;
                     } else {
@@ -231,9 +247,16 @@
 
                         // Formatage FR de la date pour confirmation
                         const dateObj = new Date(fullDatetime.replace(' ', 'T'));
-                        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                        const options = {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        };
                         const dateFr = dateObj.toLocaleDateString('fr-FR', options);
-                        const heureFr = dateObj.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                        const heureFr = dateObj.toLocaleTimeString('fr-FR', {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
                         const message = `Confirmez-vous la réservation pour le ${dateFr} à ${heureFr} ?`;
 
                         // --- Confirmation et envoi de la réservation ---
@@ -253,12 +276,7 @@
                                 .then(data => {
                                     if (data.success) {
                                         alert(data.message);
-                                        // Optionnel: Recharger les créneaux pour ce jour pour montrer que le créneau est pris
-                                        const activeTabPane = document.querySelector('.tab-pane.show.active');
-                                        const monthOffset = activeTabPane.id.replace('mois', '');
-                                        const timeSlotsContainerId = 'time-slots-mois' + monthOffset;
-                                        const selectedDate = document.querySelector('.calendar-selectable-day.active-selected').dataset.date;
-                                        loadTimeSlots(selectedDate, timeSlotsContainerId);
+                                        window.location.href = '../Controller/controller-profil.php';
                                     } else {
                                         alert('Erreur: ' + (data.message || JSON.stringify(data)));
                                     }
