@@ -6,7 +6,7 @@
     } else {
         include_once "../../templates/deco-nav.php";
     } ?>
-    <header>
+    <header class="mb-5">
         <div class="container h-100">
             <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                 <div class="col-lg-8 align-self-end">
@@ -28,12 +28,13 @@
         </div>
     </header>
 
-    <h2 class="text-center" data-bs-theme="light">
-        Prestations
-    </h2>
+
 
     <section>
         <div class="rounded" id="prestations" data-bs-theme="light">
+            <h2 class="text-center" data-bs-theme="light">
+                Prestations
+            </h2>
             <div class="row row-cols-lg-3 g-4">
                 <?php foreach ($prestations as $value) { ?>
                     <div class="col">

@@ -40,7 +40,7 @@
                                 $duree = ltrim(date('G\hi', strtotime($rdv['prestation_duree'])), '0');
                             ?>
                                 <div class="col">
-                                    <div class="card shadow border border-light h-100">
+                                    <div class="card shadow border text-dark h-100" style="background-color: #FFEFC1;">
                                         <div class="card-body">
                                             <h5 class="card-title mb-2"><?= htmlspecialchars($rdv['prestation_nom']) ?></h5>
                                             <p class="card-text mb-1"><strong>Date :</strong> <?= $date ?></p>
@@ -70,7 +70,7 @@
                 <div class="modal fade" id="deconnecter" tabindex="-1"
                     aria-labelledby="deconnecterLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content" style="background-color: #FFEFC1;">
+                        <div class="modal-content text-dark" style="background-color: #FFEFC1;">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="deconnecterLabel">Confirmation de déconnexion
                                 </h1>
@@ -90,7 +90,7 @@
                 <div class="modal fade" id="supprimer" tabindex="-1" aria-labelledby="supprimerLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content" style="background-color: #FFEFC1;">
+                        <div class="modal-content text-dark" style="background-color: #FFEFC1;">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="supprimerLabel">Confirmation de suppression
                                 </h1>
