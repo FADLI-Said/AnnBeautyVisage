@@ -79,6 +79,9 @@
                     </div>
                 <?php } ?>
             </div>
+            <div class="text-center my-3">
+                <span id="admin-selected-date" class="h4"></span>
+            </div>
             <div id="admin-horraires" class="horraires-list"></div>
         </div>
         <div class="border border-black rounded shadow p-3 mt-5 rounded mx-auto text-dark" id="prestations" style="background-color: #FFEFC1;">
@@ -168,6 +171,14 @@
                 return res || 'Non défini';
             }
             document.addEventListener('DOMContentLoaded', function() {
+                function formatDateFr(dateStr) {
+                    const d = new Date(dateStr);
+                    return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long' });
+                }
+                function setSelectedDateLabel(dateStr) {
+                    const label = document.getElementById('admin-selected-date');
+                    if (label) label.textContent = formatDateFr(dateStr);
+                }
                 function attachAdminDayClickListeners() {
                     const selectableDays = document.querySelectorAll('.admin-calendar-selectable-day');
                     selectableDays.forEach(day => {
@@ -178,6 +189,7 @@
                                 activeDay.classList.remove('active-selected');
                             });
                             this.classList.add('active-selected');
+                            setSelectedDateLabel(selectedDate);
                             showAdminRdvForDate(selectedDate);
                         });
                     });
@@ -196,11 +208,11 @@
                         html += `<div class="card shadow border border-dark" style="min-width:260px;max-width:340px;background-color: #FFEFC1;color:white;">
                         <div class="card-body">
                             <h5 class="card-title mb-2 text-dark">${rdv.prestation_nom}</h5>
-                            <p class="card-text mb-1 text-dark"><strong>Client :</strong> ${rdv.user_id}</p>
+                            <p class="card-text mb-1 text-dark"><strong>Client :</strong> ${rdv.user_nom} ${rdv.user_prenom}</p>
                             <p class="card-text mb-1 text-dark"><strong>Heure :</strong> ${formatHeure(rdv.reservation_start)} - ${formatHeure(rdv.reservation_end)}</p>
                             <p class="card-text mb-1 text-dark"><strong>Durée :</strong> ${formatDuree(rdv.prestation_duree)}</p>
                             <p class="card-text mb-1 text-dark"><strong>Prix :</strong> ${Number(rdv.prestation_prix).toLocaleString('fr-FR', {minimumFractionDigits:2})} €</p>
-                            ${rdv.prestation_image ? `<img src="../../assets/images/${rdv.prestation_image}" alt="Image prestation" class="img-fluid rounded mt-2" style="max-height:90px;object-fit:cover;">` : ''}
+                            ${rdv.prestation_image ? `<img src="../../assets/images/${rdv.prestation_image}" alt="Image prestation" class="img-fluid rounded mt-2" style="object-fit:cover;">` : ''}
                         </div>
                     </div>`;
                     });
@@ -208,6 +220,15 @@
                     horairesDiv.innerHTML = html;
                 }
                 attachAdminDayClickListeners();
+                // Affiche la date du jour sélectionnée par défaut
+                const today = new Date();
+                const todayYmd = today.toISOString().slice(0,10);
+                const btnToday = document.querySelector('.admin-calendar-selectable-day[data-date="' + todayYmd + '"]');
+                if (btnToday) {
+                    btnToday.classList.add('active-selected');
+                    setSelectedDateLabel(todayYmd);
+                    showAdminRdvForDate(todayYmd);
+                }
             });
         </script>
     </section>

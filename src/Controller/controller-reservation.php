@@ -1,11 +1,11 @@
 
 <?php
 // DEBUG: Log fatal errors and script start for AJAX debug
-file_put_contents(__DIR__.'/debug.log', date('c')."\nSTART\n", FILE_APPEND);
-register_shutdown_function(function() {
+file_put_contents(__DIR__ . '/debug.log', date('c') . "\nSTART\n", FILE_APPEND);
+register_shutdown_function(function () {
     $error = error_get_last();
     if ($error) {
-        file_put_contents(__DIR__.'/debug.log', date('c')."\nFATAL: ".print_r($error, true)."\n", FILE_APPEND);
+        file_put_contents(__DIR__ . '/debug.log', date('c') . "\nFATAL: " . print_r($error, true) . "\n", FILE_APPEND);
     }
 });
 
@@ -17,7 +17,8 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // --- FONCTION UNIVERSELLE POUR FORCER LE JSON EN AJAX ---
-function forceJsonError($array) {
+function forceJsonError($array)
+{
     header('Content-Type: application/json');
     echo json_encode($array);
     exit();
@@ -31,7 +32,8 @@ session_start();
 // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion (sauf pour AJAX, on renvoie du JSON)
 if (!isset($_SESSION["user_id"])) {
     if ((isset($_GET['action']) && $_GET['action'] == 'getTimeSlots') || (isset($_POST['action']) && $_POST['action'] == 'makeReservation') ||
-        (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')) {
+        (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+    ) {
         forceJsonError(['error' => 'Utilisateur non connecté. Veuillez vous reconnecter.']);
     } else {
         header("Location: controller-connexion.php");
@@ -178,8 +180,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'getTimeSlots' && isset($_GET['
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'makeReservation') {
     header('Content-Type: application/json');
     // DEBUG LOGS
-    error_log('SESSION: '.print_r($_SESSION, true));
-    error_log('POST: '.print_r($_POST, true));
+    error_log('SESSION: ' . print_r($_SESSION, true));
+    error_log('POST: ' . print_r($_POST, true));
 
     // Vérification de la session utilisateur.
     if (!isset($_SESSION["user_id"])) {
@@ -231,11 +233,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     // --- Vérification des chevauchements (très important pour éviter les doubles réservations) ---
     // Cette requête vérifie si la nouvelle réservation chevauche une réservation existante.
     try {
-        $stmtOverlap = $pdo->prepare("SELECT COUNT(*) FROM 76_reservation
-                                       WHERE reservation_date = :reservation_date
-                                       AND (
-                                           (reservation_start < :reservation_end AND reservation_end > :reservation_start)
-                                       )");
+        $stmtOverlap = $pdo->prepare(
+        "SELECT COUNT(*) 
+        FROM 76_reservation 
+        WHERE reservation_date = :reservation_date 
+        AND ((reservation_start < :reservation_end AND reservation_end > :reservation_start))");
+
         $stmtOverlap->execute([
             ':reservation_date' => $reservationDate,
             ':reservation_start' => $reservationStart,
@@ -253,8 +256,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     // --- Insertion de la réservation dans la base de données ---
     try {
-        $stmtInsert = $pdo->prepare("INSERT INTO 76_reservation (reservation_date, reservation_start, reservation_end, prestation_id, user_id)
-                                     VALUES (:reservation_date, :reservation_start, :reservation_end, :prestation_id, :user_id)");
+        $stmtInsert = $pdo->prepare(
+            "INSERT INTO 76_reservation (reservation_date, reservation_start, reservation_end, prestation_id, user_id)
+            VALUES (:reservation_date, :reservation_start, :reservation_end, :prestation_id, :user_id)");
+            
         $stmtInsert->execute([
             ':reservation_date' => $reservationDate,
             ':reservation_start' => $reservationStart,
@@ -280,8 +285,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 // Ce bloc s'exécute lorsque la page est chargée normalement (pas via AJAX).
 
 $mois = [
-    1 => "Janvier", 2 => "Février", 3 => "Mars", 4 => "Avril", 5 => "Mai", 6 => "Juin",
-    7 => "Juillet", 8 => "Août", 9 => "Septembre", 10 => "Octobre", 11 => "Novembre", 12 => "Décembre"
+    1 => "Janvier",
+    2 => "Février",
+    3 => "Mars",
+    4 => "Avril",
+    5 => "Mai",
+    6 => "Juin",
+    7 => "Juillet",
+    8 => "Août",
+    9 => "Septembre",
+    10 => "Octobre",
+    11 => "Novembre",
+    12 => "Décembre"
 ];
 
 

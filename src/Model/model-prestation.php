@@ -41,7 +41,11 @@ class Prestations
         $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "UPDATE 76_prestation SET prestation_image = :image, prestation_nom = :nom, prestation_description = :description, prestation_prix = :prix, prestation_duree = :duree WHERE prestation_id = :id";
+        $sql = 
+        "UPDATE 76_prestation 
+        SET prestation_image = :image, prestation_nom = :nom, prestation_description = :description, prestation_prix = :prix, prestation_duree = :duree 
+        WHERE prestation_id = :id";
+        
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':image', $image, PDO::PARAM_STR);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);

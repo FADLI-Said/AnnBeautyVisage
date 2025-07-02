@@ -96,7 +96,6 @@
                                 for ($i = $lastDayOfWeek; $i < 7; $i++) { ?>
                                     <a class="calendar-day calendar-empty"></a>
                                 <?php } ?>
-                                ?>
                             </div>
                         </div>
                     </div>

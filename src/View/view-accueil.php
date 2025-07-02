@@ -18,7 +18,7 @@
                         <figcaption class="blockquote-footer"><?= $randomAuthor ?></figcaption>
                     </figure>
                 </div>
-                <hr>
+                <hr class="w-75">
                 <div class="col-lg-8 align-self-baseline">
                     <h1>Sublimer votre beauté naturelle !</h1>
                     <p>Des soins personnalisés pour révéler l'éclat de votre peau.</p>
@@ -37,7 +37,7 @@
             </h2>
             <div class="row row-cols-lg-3 g-4">
                 <?php foreach ($prestations as $value) { ?>
-                    <div class="col">
+                    <div class="col-lg-4 d-flex justify-content-center">
                         <a href="../Controller/controller-reservation.php?prestation=<?= $value["prestation_id"] ?>" class="text-decoration-none">
                             <div class="prestation rounded shadow">
                                 <div class="border border-bottom-0 rounded-top">
@@ -57,7 +57,7 @@
                 <?php } ?>
             </div>
         </div>
-        <div id="horraires">
+        <div id="horraires" class="d-lg-flex d-none">
             <div class="border border-light rounded shadow p-3 rounded">
                 <h3>Horaire</h3>
                 <div class="d-flex justify-content-between">
